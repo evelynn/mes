@@ -52,8 +52,8 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.beans.factory.annotation.Configurable;
 
 import com.qcadoo.mes.productionCounting.constants.ProductionCountingConstants;
-import com.qcadoo.mes.productionCounting.states.aop.ProductionTrackingStateChangeAspect;
-import com.qcadoo.mes.productionCounting.states.constants.ProductionTrackingStateChangePhase;
+//import com.qcadoo.mes.productionCounting.states.aop.ProductionTrackingStateChangeAspect;
+//import com.qcadoo.mes.productionCounting.states.constants.ProductionTrackingStateChangePhase;
 import com.qcadoo.mes.productionCounting.states.constants.ProductionTrackingStateStringValues;
 import com.qcadoo.mes.productionCounting.states.listener.ProductionTrackingListenerService;
 import com.qcadoo.mes.states.StateChangeContext;
@@ -65,41 +65,41 @@ import com.qcadoo.plugin.api.RunIfEnabled;
 @Aspect
 @Configurable
 @RunIfEnabled(ProductionCountingConstants.PLUGIN_IDENTIFIER)
-public class ProductionTrackingListenerAspect extends AbstractStateListenerAspect {
+public class ProductionTrackingListenerAspect_ extends AbstractStateListenerAspect {
 
     @Autowired
     private ProductionTrackingListenerService productionTrackingListenerService;
 
-    @Pointcut(ProductionTrackingStateChangeAspect.SELECTOR_POINTCUT)
+    @Pointcut(/*ProductionTrackingStateChangeAspect.SELECTOR_POINTCUT*/"")
     protected void targetServicePointcut() {
     }
 
 
-    @RunInPhase(ProductionTrackingStateChangePhase.PRE_VALIDATION)
-    @RunForStateTransition(targetState = ProductionTrackingStateStringValues.ACCEPTED)
-    @Before(PHASE_EXECUTION_POINTCUT)
-    public void validationOnAccept(final StateChangeContext stateChangeContext, final int phase) {
-        productionTrackingListenerService.validationOnAccept(stateChangeContext);
-    }
+//    @RunInPhase(ProductionTrackingStateChangePhase.PRE_VALIDATION)
+//    @RunForStateTransition(targetState = ProductionTrackingStateStringValues.ACCEPTED)
+//    @Before(PHASE_EXECUTION_POINTCUT)
+//    public void validationOnAccept(final StateChangeContext stateChangeContext, final int phase) {
+//        productionTrackingListenerService.validationOnAccept(stateChangeContext);
+//    }
 
-    @RunInPhase(ProductionTrackingStateChangePhase.LAST)
-    @RunForStateTransition(targetState = ProductionTrackingStateStringValues.ACCEPTED)
-    @Before(PHASE_EXECUTION_POINTCUT)
-    public void onAccept(final StateChangeContext stateChangeContext, final int phase) {
-        productionTrackingListenerService.onAccept(stateChangeContext);
-    }
+//    @RunInPhase(ProductionTrackingStateChangePhase.LAST)
+//    @RunForStateTransition(targetState = ProductionTrackingStateStringValues.ACCEPTED)
+//    @Before(PHASE_EXECUTION_POINTCUT)
+//    public void onAccept(final StateChangeContext stateChangeContext, final int phase) {
+//        productionTrackingListenerService.onAccept(stateChangeContext);
+//    }
 
-    @RunInPhase(ProductionTrackingStateChangePhase.LAST)
-    @RunForStateTransition(sourceState = ProductionTrackingStateStringValues.ACCEPTED, targetState = ProductionTrackingStateStringValues.DECLINED)
-    @Before(PHASE_EXECUTION_POINTCUT)
-    public void onChangeFromAcceptedToDecline(final StateChangeContext stateChangeContext, final int phase) {
-        productionTrackingListenerService.onChangeFromAcceptedToDeclined(stateChangeContext);
-    }
+//    @RunInPhase(ProductionTrackingStateChangePhase.LAST)
+//    @RunForStateTransition(sourceState = ProductionTrackingStateStringValues.ACCEPTED, targetState = ProductionTrackingStateStringValues.DECLINED)
+//    @Before(PHASE_EXECUTION_POINTCUT)
+//    public void onChangeFromAcceptedToDecline(final StateChangeContext stateChangeContext, final int phase) {
+//        productionTrackingListenerService.onChangeFromAcceptedToDeclined(stateChangeContext);
+//    }
     
-    @RunInPhase(ProductionTrackingStateChangePhase.DEFAULT)
-    @RunForStateTransition(sourceState = ProductionTrackingStateStringValues.DRAFT)
-    @Before(PHASE_EXECUTION_POINTCUT)
-    public void onChangeFromDraftToAny(final StateChangeContext stateChangeContext, final int phase) {
-        productionTrackingListenerService.onLeavingDraft(stateChangeContext);
-    }
+//    @RunInPhase(ProductionTrackingStateChangePhase.DEFAULT)
+//    @RunForStateTransition(sourceState = ProductionTrackingStateStringValues.DRAFT)
+//    @Before(PHASE_EXECUTION_POINTCUT)
+//    public void onChangeFromDraftToAny(final StateChangeContext stateChangeContext, final int phase) {
+//        productionTrackingListenerService.onLeavingDraft(stateChangeContext);
+//    }
 }

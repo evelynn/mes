@@ -28,14 +28,14 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
 import com.qcadoo.mes.productionCounting.states.constants.ProductionTrackingStateChangeDescriber;
-import com.qcadoo.mes.productionCounting.states.constants.ProductionTrackingStateChangePhase;
+//import com.qcadoo.mes.productionCounting.states.constants.ProductionTrackingStateChangePhase;
 import com.qcadoo.mes.states.StateChangeContext;
 import com.qcadoo.mes.states.StateChangeEntityDescriber;
 import com.qcadoo.mes.states.aop.AbstractStateChangeAspect;
 
 @Aspect
 @Service
-public class ProductionTrackingStateChangeAspect extends AbstractStateChangeAspect {
+public class ProductionTrackingStateChangeAspect_ extends AbstractStateChangeAspect {
 
     @Autowired
     private ProductionTrackingStateChangeDescriber productionTrackingStateChangeDescriber;
@@ -49,7 +49,8 @@ public class ProductionTrackingStateChangeAspect extends AbstractStateChangeAspe
 
     @Override
     protected int getNumOfPhases() {
-        return ProductionTrackingStateChangePhase.getNumOfPhases();
+        return 0;
+//        return ProductionTrackingStateChangePhase.getNumOfPhases();
     }
 
     @Override
